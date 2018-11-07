@@ -7,8 +7,9 @@ const SingedInLinks = (props) => {
   return (
     <ul className="right">
       <li><NavLink to="/create">New Thread</NavLink></li>
+      <li><NavLink to="/messenger">Messenger</NavLink></li>
       <li><NavLink to="/" onClick={props.signOut}>Log out</NavLink></li>
-      <li><NavLink to="/" className="btn btn-floating pink lighten-1">{props.profile.initials}</NavLink></li>
+      <li><NavLink to={'/profile/123'} className="btn btn-floating pink lighten-1">{props.profile.initials}</NavLink></li>
     </ul>
   )
 };
