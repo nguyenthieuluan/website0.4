@@ -1,3 +1,4 @@
+
 function makeid(x) {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkl mnopqrstuvwxyz0123456789";
@@ -6,7 +7,7 @@ function makeid(x) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   return text;
 }
-
+// auto generate
 export const createProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -28,6 +29,7 @@ export const createProject = (project) => {
   }
 };
 
+/// not delete
 
 // export const createProject = (project) => {
 //   return (dispatch, getState, { getFirebase, getFirestore }) => {
