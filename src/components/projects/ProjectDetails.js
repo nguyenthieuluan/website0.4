@@ -1,17 +1,39 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import {firestoreConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
 import {Redirect} from "react-router-dom";
 import moment from "moment";
+import Spinner from "../ui/spinner/Spinner";
+import CommentEditor from "./comments/CommentEditor";
+import {createComment} from "../../store/actions/projectActions";
+import {createChat, createMessage} from "../../store/actions/chatActions";
 
-class  ProjectDetails extends Component {
+class ProjectDetails extends Component {
+  state = {
+    value: '',
+    projectId: ''
+  };
+  handleChangeValue = e => {
+    this.setState({value: e.target.value});
+  };
+  handleComment = (e) => {
+    e.preventDefault();
+    this.props.createComment({content: this.state.value, projectId: this.state.projectId});
+    //alert(this.state.value);
+  };
+
+  componentWillMount() {
+    this.setState({
+      projectId: this.props.match.params.id
+    });
+  }
   render() {
-    const {project, auth} =this.props;
+    const {project, auth} = this.props;
     if (!auth.uid) {
-      return <Redirect to='/signin' />
+      return <Redirect to='/signin'/>
     }
-    if(project) {
+    if (project) {
       return (
         <div className="container project-detail section left-align">
           <div className="card z-depth-0">
@@ -28,17 +50,21 @@ class  ProjectDetails extends Component {
               <div>{moment(project.createdAt.toDate()).calendar()}</div>
             </div>
           </div>
+          <CommentEditor handleComment={this.handleComment}
+                         value={this.state.value}
+                         onChangeValue={this.handleChangeValue}/>
         </div>
-        )
+      )
     } else {
       return (
         <div className="container">
-          <p>Loading ...</p>
+          <Spinner/>
         </div>
       )
     }
   }
 }
+
 const initMapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const projects = state.firestoreReducer.data.projects;
@@ -49,8 +75,14 @@ const initMapStateToProps = (state, ownProps) => {
   }
 };
 
+const initMapDispatchToProps = (dispatch) => {
+  return {
+    createComment: (comment) => dispatch(createComment(comment))
+  }
+};
+
 export default compose(
-  connect(initMapStateToProps),
+  connect(initMapStateToProps, initMapDispatchToProps),
   firestoreConnect([
     {collection: 'projects'}
   ])

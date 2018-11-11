@@ -6,6 +6,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
  response.send("Hello from Nguyen Thieu Luan!");
 });
 
+// create notifications
 const createNotification = ((notification) => {
  return admin.firestore().collection('notifications').add(notification)
    .then(doc => console.log('notification added ', doc))
@@ -36,3 +37,5 @@ exports.userCreated = functions.auth.user()
       return createNotification(notification)
      })
   });
+
+// create messages

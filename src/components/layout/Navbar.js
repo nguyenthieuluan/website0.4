@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import SingedInLinks from "./SignedInLinks";
 import SingedOutLinks from "./SignedOutLinks";
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 class Navbar extends Component {
   render() {
@@ -27,4 +27,4 @@ const initMapStateToProps = (state) => {
   }
 };
 
-export default connect(initMapStateToProps) (Navbar);
+export default connect(initMapStateToProps)(Navbar);

@@ -17,7 +17,7 @@ export const signOut = () => {
   }
 };
 
-export const signUp = (newUser ) => {
+export const signUp = (newUser) => {
   return (dispatch, getState, {getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
@@ -26,10 +26,12 @@ export const signUp = (newUser ) => {
         return firestore.collection('users').doc(resp.user.uid).set({
           firstName: newUser.firstName,
           lastName: newUser.lastName,
-          initials: newUser.firstName[0] + newUser.lastName[0]
+          initials: newUser.firstName[0] + newUser.lastName[0],
+          email: newUser.email,
+          createAt: new Date()
         })
           .then(()=>dispatch({type: 'SIGNIN_SUCCESS'}))
           .catch((error)=>dispatch({type: 'SIGNIN_ERROR', error}))
       })
   }
-}
+};

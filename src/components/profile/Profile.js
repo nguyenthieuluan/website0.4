@@ -6,18 +6,16 @@ import { compose } from 'redux';
 export class Profile extends Component {
     state = {
         isShowChangePassword: false
-    }
+    };
 
-    changePasswordHandle = () => {
+    changePasswordHandle = (e) => {
+      e.preventDefault();
         this.setState({
-            isShowChangePassword: true
+            isShowChangePassword: !this.state.isShowChangePassword
         })
-    }
+    };
   render() {
-      const {auth} = this.props;
-
-      //console.log(JSON.stringify(auth));
-     //console.log(auth.email)
+    const {auth} = this.props;
     const changePassword = this.state.isShowChangePassword ? (
         <div className="">
           <div className="input-field">
@@ -36,19 +34,20 @@ export class Profile extends Component {
 
     return (
         <div className="left-align white container">
-          <h5 className="grey-text text-darken-3">Your profile</h5>
+          <form onSubmit={this.changePasswordHandle}>
+            <h5 className="grey-text text-darken-3">Your profile</h5>
             <div className="row">
-                <div className="input-field col s9">
-                    <span className="s3 pink-text">{auth.email}</span>
-                </div>
-                <div className="col col2">
-                    <button onClick={this.changePasswordHandle} className="btn pink lighten-1">Change Password</button>
-                </div>
+              <div className="input-field col s9">
+                <span className="s3 pink-text">{auth.email}</span>
+              </div>
+              <div className="col col2">
+                <button type="submit" className="btn pink lighten-1">Change Password</button>
+              </div>
             </div>
             <div className="row">
-                {changePassword}
+              {changePassword}
             </div>
-          {/* <div className="input-field">
+            {/* <div className="input-field">
             <label htmlFor="email">Password</label>
             <input type="email" id="email" onChange={this.handleChange}/>
           </div>
@@ -59,6 +58,7 @@ export class Profile extends Component {
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Save</button>
           </div> */}
+          </form>
       </div>
     )
   }

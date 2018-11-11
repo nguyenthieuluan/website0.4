@@ -46,3 +46,34 @@
     float: left;
     color: #999;
 }
+
+.chat-box {
+    height: 300px;
+    width: 100%;
+    background: #ffffff;
+    overflow: auto;
+}
+
+.react-tags__selected-tag-name, .react-tags__selected-tag {
+    font-size: 15px;
+    padding: 7px;
+    border-radius: 5px;
+    border: 0;
+    background: #95b0c9;
+}
+.friend-list {
+    margin-top: 60px;
+    padding: 5px;
+}
+
+.message-item {
+    background: #c6f8ff;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin: 5px;
+    width: auto;
+    display: inline-block;
+}
+.message-item-time {
+    margin: 0;
+}

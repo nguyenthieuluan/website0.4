@@ -6,6 +6,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import Pagination from "react-js-pagination";
 import "./Dashboard.css";
+import Spinner from '../ui/spinner/Spinner'
 
 class Dashboard extends Component{
   constructor(props) {
@@ -19,20 +20,21 @@ class Dashboard extends Component{
   handlePageChange = (pageNumber) => {
     //console.log(`active page is ${pageNumber}`);
     this.setState({activePage: pageNumber});
-  }
+  };
 
   render() {
     const { projects, auth, notifications } = this.props;
     const indexOfLastList = this.state.activePage * this.state.itemsCountPerPage;
     const indexOfFirstList = indexOfLastList - this.state.itemsCountPerPage;
     const projectsList = projects && projects.slice(indexOfFirstList, indexOfLastList);
-    const notif = auth.uid ? <Notifications notifications={notifications}/> : null ;
+    const projectsListRD = projects ? <ProjectList projects={projectsList}/> : <Spinner/>;
+    const notif = auth.uid ? <Notifications notifications={notifications}/> : <Spinner/> ;
 
     return (
       <div className="dashboard container">
         <div className="row">
           <div className="col s12 m6">
-            <ProjectList projects={projectsList}/>
+            {projectsListRD}
           </div>
           <div className="col s12 m5 offset-m1">
             {notif}
