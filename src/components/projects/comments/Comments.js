@@ -1,9 +1,17 @@
 import React from 'react';
+import CommentItem from './CommentItem';
 
-const Comments = () => {
+const Comments = ({comments}) => {
   return (
-    <div>
-
+    <div className="container">
+      {comments && comments.map((comment, i) => {
+        return (
+          <div key={i}>
+            i
+            <CommentItem comment = {comment}/>
+          </div>
+        )
+      })}
     </div>
   );
 };

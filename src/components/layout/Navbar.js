@@ -11,7 +11,7 @@ class Navbar extends Component {
     return (
       <nav>
         <div className="nav-wrapper grey darken-3 left-align">
-          <Link to="/" className="brand-logo">THIEULUAN</Link>
+          <Link to="/" className="brand-logo left-align">THIEULUAN</Link>
           {links}
         </div>
       </nav>

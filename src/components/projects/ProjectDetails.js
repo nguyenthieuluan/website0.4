@@ -6,6 +6,8 @@ import {Redirect} from "react-router-dom";
 import moment from "moment";
 import Spinner from "../ui/spinner/Spinner";
 import CommentEditor from "./comments/CommentEditor";
+import Comment from './comments/Comments';
+
 import {createComment} from "../../store/actions/projectActions";
 import {createChat, createMessage} from "../../store/actions/chatActions";
 
@@ -50,6 +52,7 @@ class ProjectDetails extends Component {
               <div>{moment(project.createdAt.toDate()).calendar()}</div>
             </div>
           </div>
+          <Comment comments={project.comments}/>
           <CommentEditor handleComment={this.handleComment}
                          value={this.state.value}
                          onChangeValue={this.handleChangeValue}/>
