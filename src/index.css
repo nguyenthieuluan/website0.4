@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /*background: url(/img/background.jpg) no-repeat;*/
-  background: #25292c;
+  background: #ddebf5;
   background-size: 100%;
   background-attachment: fixed;
   min-height: 100%;
@@ -23,7 +23,6 @@ code {
 
 form {
   padding: 20px;
-  margin-top: 60px;
 }
 
 form button, form h5 {
