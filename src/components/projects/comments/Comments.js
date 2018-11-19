@@ -1,13 +1,14 @@
 import React from 'react';
 import CommentItem from './CommentItem';
+import './Comment.css'
+
 
 const Comments = ({comments}) => {
   return (
-    <div className="container">
+    <div className="white">
       {comments && comments.map((comment, i) => {
         return (
           <div key={i}>
-            i
             <CommentItem comment = {comment}/>
           </div>
         )

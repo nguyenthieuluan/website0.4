@@ -12,7 +12,9 @@ class Navbar extends Component {
       <nav>
         <div className="nav-wrapper grey darken-3 left-align">
           <Link to="/" className="brand-logo left-align">THIEULUAN</Link>
-          {links}
+          <ul className="right hide-on-med-and-down">
+            {links}
+          </ul>
         </div>
       </nav>
     )

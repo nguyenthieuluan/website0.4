@@ -9,7 +9,7 @@ import CommentEditor from "./comments/CommentEditor";
 import Comment from './comments/Comments';
 
 import {createComment} from "../../store/actions/projectActions";
-import {createChat, createMessage} from "../../store/actions/chatActions";
+
 
 class ProjectDetails extends Component {
   state = {
@@ -24,7 +24,9 @@ class ProjectDetails extends Component {
     this.props.createComment({content: this.state.value, projectId: this.state.projectId});
     //alert(this.state.value);
   };
-
+  handleDeleteThread = () => {
+    alert(this.props.match.params.id)
+  };
   componentWillMount() {
     this.setState({
       projectId: this.props.match.params.id
@@ -40,9 +42,12 @@ class ProjectDetails extends Component {
         <div className="container project-detail section left-align">
           <div className="card z-depth-0">
             <div className="card-content">
-            <span className="card-title">
-              {project.title}
-            </span>
+              <div className="">
+              </div>
+              <span className="card-title">
+                {project.title}
+                <button className="right-align" onClick={this.handleDeleteThread}>...</button>
+              </span>
               <p>
                 {project.content}
               </p>

@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import './Profile.css';
 
 export class Profile extends Component {
     state = {
-        isShowChangePassword: false
+      selectedFile: null,
+      isShowChangePassword: false,
+
     };
 
     changePasswordHandle = (e) => {
@@ -14,6 +17,18 @@ export class Profile extends Component {
             isShowChangePassword: !this.state.isShowChangePassword
         })
     };
+    handleChangeImage = (e) => {
+      //console.log(e);
+      if (e.target.files[0]) {
+        this.setState({
+          selectedFile: e.target.files[0]
+        });
+      }
+      console.log(e.target.files[0]);
+    };
+  handleUpload = () => {
+
+  };
   render() {
     const {auth} = this.props;
     const changePassword = this.state.isShowChangePassword ? (
@@ -38,9 +53,15 @@ export class Profile extends Component {
             <h5 className="grey-text text-darken-3">Your profile</h5>
             <div className="row">
               <div className="input-field col s9">
+                <div className="pink lighten-4 avatar">
+                </div>
                 <span className="s3 pink-text">{auth.email}</span>
               </div>
               <div className="col col2">
+                <div>
+                  <input type="file" onChange={this.handleChangeImage}/>
+                  <button className="btn pink lighten-2">Upload</button>
+                </div>
                 <button type="submit" className="btn pink lighten-1">Change Password</button>
               </div>
             </div>
