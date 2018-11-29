@@ -4,6 +4,9 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import "./Dashboard.css";
 import firebase from '../../config/firebaseConfig';
+import Player from '../player/Player';
+
+
 
 const storage = firebase.storage().ref();
 class Dashboard extends Component{
@@ -29,25 +32,17 @@ class Dashboard extends Component{
     })
   };
   render() {
-    console.log(this.state);
-// Get a reference to the storage service, which is used to create references in your storage bucket
-    // const storage = firebase.storage();
-
-    // // Create a storage reference from our storage service
-    // const storageRef = storage.ref();
-
-    // console.log(storageRef);
     return (
       <div className="dashboard container">
         <div className="row">
            <audio controls type="audio/mpeg" src={"https://firebasestorage.googleapis.com/v0/b/ntl001-186700.appspot.com/o/A%20Thousand%20Years%20-%20Christina%20Perri%20-%20Broken%20Heart%20-%20V.A%20-%20Playlist%20NhacCuaTui.MP3?alt=media&token=a6d63fd4-45a7-4dfa-b722-a7d46e23baa2"} />
+           <audio controls type="audio/mpeg" src={"https://firebasestorage.googleapis.com/v0/b/ntl001-186700.appspot.com/o/musics%2Fvertu.mp3?alt=media&token=2d55827f-d50b-423b-bc45-575104502bbd"} />
         </div>
-        <button onClick={this.handleGetSong}>click</button>
-        <div>
-          <img src={ this.state.lithuania } alt="Lithuanian flag" />
-          <br />
-          <img src={ this.state.uk } alt="UK flag" />
+        <div className="player">
+          <Player/>
         </div>
+        {/* <button onClick={this.handleGetSong}>click</button> */}
+        
       </div>
     )
   }

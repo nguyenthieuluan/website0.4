@@ -18,10 +18,8 @@ class SignIn extends Component {
     this.props.signIn(this.state)
   };
   render() {
-    const {authError, auth} = this.props;
-    if (auth.uid) {
-      return <Redirect to='/' />
-    }
+    const {authError} = this.props;
+   
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">

@@ -1,5 +1,16 @@
+body {
+  background: url(/img/background.jpg) no-repeat;
+  background-size: 100%;
+}
 .music {
   width: 50px;
   height: 50px;
   color: black;
+}
+
+.player {
+  position: fixed;
+  left: 0;
+   bottom: 0;
+   width: 100%;
 }
