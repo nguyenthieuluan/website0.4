@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Player.css';
 
-export default class Player extends Component {
-  render() {
+const Player = (props) => {
+    const {song} = props;
     return (
-      <div className="player">
-            <button className="previous round">&#8249;</button>
-            <button className="next round">&#8250;</button>
-        player
-      </div>
+        <div className="player">
+            {/* <button className="previous round">&#8249;</button>
+            <button className="next round">&#8250;</button> */}
+            <audio controls type="audio/mpeg" src={song.url} />
+            <span>{song.name}</span>
+        </div>
+        
     )
-  }
 }
+
+export default Player;

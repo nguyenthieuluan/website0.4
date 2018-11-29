@@ -17,7 +17,10 @@ class Admin extends Component {
     handleChange = (e) => {
         this.setState({
             file: e.target.files[0],
-            fileUpload: {name: e.target.files[0].name}
+            fileUpload: {
+                ...this.state.fileUpload,
+                name: e.target.files[0].name
+            }
         })
         console.log(JSON.stringify(this.state.uploadFile))
       };
@@ -26,37 +29,35 @@ class Admin extends Component {
         //create a storage ref
         const storageRef = firebase.storage().ref('musics/' + this.state.file.name);
 
-        // //upload file
-        // const task = storageRef.put(this.state.file);
-        // //update progress
-        // task.on('state_changed', snappshot => {
-        //     const progress = (snappshot.bytesTransferred / snappshot.totalBytes) * 100;
-        //     this.setState({
-        //         percentate: progress
-        //     })
-        // }, error => {
-        //     console.log(error);
-        // }, () => {
+        //upload file
+        const task = storageRef.put(this.state.file);
+        //update progress
+        task.on('state_changed', snappshot => {
+            const progress = (snappshot.bytesTransferred / snappshot.totalBytes) * 100;
+            this.setState({
+                percentate: progress
+            })
+        }, error => {
+            console.log(error);
+        }, () => {
 
-        //     const storage = firebase.storage().ref();
-        //     storage.child('musics/'+ this.state.file.name).getDownloadURL().then(function(url) {
-        //         console.log('child url: '+ url);
-        //         console.log(JSON.stringify(this.state.uploadFile))
-        //         // this.setState({
-        //         //     fileUpload: {
-        //         //         ...this.state.fileUpload,
-        //         //         url: url
-        //         //     }
-        //         // });
+            const storage = firebase.storage().ref();
+            storage.child('musics/'+ this.state.file.name).getDownloadURL().then((url) => {
+                this.setState({
+                    fileUpload: {
+                        ...this.state.fileUpload,
+                        url: url
+                    }
+                });
 
+                console.log('xxx' +this.state.fileUpload.url);
+                this.props.uploadFile(this.state.fileUpload);
+            }).catch((error) => {});
+        })
+        
 
-        //         // console.log(this.state.file.url);
-        //         // this.props.uploadFile(this.state.file);
-        //     }).catch(function(error) {});
-        // })
-        //
-
-        this.props.uploadFile(this.state.fileUpload);
+        // console.log(this.state.fileUpload)
+        // this.props.uploadFile(this.state.fileUpload);
 
     }
 
@@ -82,7 +83,6 @@ class Admin extends Component {
     }
   render() {
     const {auth} = this.props;
-    console.log(auth);
     if (!auth.uid) {
       return <Redirect to='/signin' />
     }

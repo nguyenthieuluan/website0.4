@@ -5,6 +5,7 @@ const initialState = {
   const adminReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'UPLOAD_FILE':
+        console.log('upload file success ');
         return state;
       case 'UPLOAD_FILE_ERROR':
         console.log('upload file error ', action.error);
