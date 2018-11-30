@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import './Rain.css';
 
 class Rain extends Component {
+  
   startRain() {
     //const rainSection = document.getElementById('Rain');
     const rainSection = document.getElementById('Rain');
@@ -21,22 +21,25 @@ class Rain extends Component {
       drop.style.left = `${dropLeft}px`;
       drop.style.top = `${dropTop}px`;
     }
-  }
+  };
+
+  stopRain() {
+    const rainSection = document.getElementById('Rain');
+
+    while(rainSection.hasChildNodes()) {
+      rainSection.removeChild(rainSection.lastChild);
+    }
+  };
+
 
   componentDidUpdate(prevProps, prevState) {
     if(this.props.numDrops !== prevProps.numDrops) {
       this.stopRain();
-      this.startRain()
+      this.startRain();
     }
-  }
+  };
 
-  stopRain() {
-    // const rainSection = document.getElementById('Rain');
-
-    // while(rainSection.hasChildNodes()) {
-    //   rainSection.removeChild(rainSection.lastChild);
-    // }
-  }
+  
 
   randRange(minNum, maxNum) {
     return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
@@ -44,7 +47,6 @@ class Rain extends Component {
 
   componentDidMount() {
     this.startRain();
-    console.log('x');
   }
 
   render() {
@@ -55,8 +57,8 @@ class Rain extends Component {
   }
 }
 
-Rain.propTypes = {
-  numDrops: PropTypes.number.isRequired
-};
+// Rain.propTypes = {
+//   numDrops: PropTypes.number.isRequired
+// };
 
 export default Rain;

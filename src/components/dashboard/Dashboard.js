@@ -5,29 +5,91 @@ import { compose } from 'redux';
 import "./Dashboard.css";
 import Player from '../player/Player';
 import Songs from './Songs';
-import Rain from '../rain/Rain';
 
 class Dashboard extends Component{
   constructor () {
     super()
     this.state = {
-      currentSong: {
-        name: 'Nohidea',
-        url: 'https://firebasestorage.googleapis.com/v0/b/ntl001-186700.appspot.com/o/musics%2FNohidea-Drowning.mp3?alt=media&token=b2b958a5-431d-4992-93fd-a161da17e17d'
-      }
+      currentSongIndex: 0,
+      play: false,
+      autoplay: true,
+    }
+  }
+
+  het = () => {
+    alert('het main');
+  };
+
+  handleBackSong = () => {
+    if (this.state.currentSongIndex > 0) {
+      const index = this.state.currentSongIndex - 1;
+      this.setState({
+        ...this.state,
+        currentSongIndex: index,
+        play: true
+      });
+    }
+  };
+  handleNextSong = () => {
+    const index = this.state.currentSongIndex + 1;
+    if (index < this.props.musics.length) {
+      this.setState({
+        ...this.state,
+        currentSongIndex: index,
+        play: true
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        currentSongIndex: 0,
+        play: true
+      });
+    }
+  };
+  // handlePlaySong = () => {
+  //   this.setState({
+  //     ...this.state,
+  //     play: false
+  //   });
+  // };
+  // handlePauseSong = () => {
+  //   this.setState({
+  //     ...this.state,
+  //     play: true
+  //   });
+  // };
+
+  componentWillMount() {
+    if (this.state.autoplay === true) {
+      this.setState({
+        ...this.state,
+        play: true
+      });
     }
   }
 
   render() {
+    // const foo= new Sound("url",100,true);
+    // foo.start();
+    // foo.stop();
+    // foo.start();
+    // foo.init(100,false);
+    // foo.remove();
     const {musics} = this.props;
+    const player = musics ? (
+        <Player song={musics[this.state.currentSongIndex]}
+                autoplay={this.state.autoplay}
+                play={this.state.play}
+                ended={this.het}
+                backSong={this.handleBackSong}
+                nextSong={this.handleNextSong}
+        />
+      ) : 'loading...';
     return (
       <div className="dashboard container">
-        <Rain numDrops={500}/>
-        <div>
           <Songs songs = {musics}/>
-        </div>
         <div className="player">
-          <Player song={this.state.currentSong}/>
+          {player}
         </div>
       </div>
     )
@@ -45,3 +107,4 @@ export default compose(
     {collection: 'musics',limit: 1000, orderBy: ['updateAt', 'desc']},
   ])
 ) (Dashboard);
+

@@ -1,4 +1,6 @@
 .player {
+    display: flex;
+    justify-content: center;
     background: black;
     color: white;
     text-align: center;
@@ -28,3 +30,12 @@ a:hover {
 .round {
     border-radius: 50%;
 }
+
+.white {
+    color: white;
+}
+
+
+
+
+
