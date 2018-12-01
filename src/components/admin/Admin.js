@@ -3,7 +3,7 @@ import firebase from '../../config/firebaseConfig';
 import {connect} from 'react-redux';
 import {uploadFile} from '../../store/actions/adminAction';
 import {Redirect} from "react-router-dom";
-
+import "./Admin.css";
 
 class Admin extends Component {
     state = {
@@ -49,15 +49,13 @@ class Admin extends Component {
                         url: url
                     }
                 });
-
-                console.log('xxx' +this.state.fileUpload.url);
                 this.props.uploadFile(this.state.fileUpload);
+                this.setState({
+                    percentate: 0
+                })
+                alert(this.state.fileUpload.name + ' uploaded!');
             }).catch((error) => {});
         })
-        
-
-        // console.log(this.state.fileUpload)
-        // this.props.uploadFile(this.state.fileUpload);
 
     }
 
@@ -86,12 +84,25 @@ class Admin extends Component {
     if (!auth.uid) {
       return <Redirect to='/signin' />
     }
+    let uploadButton = ':)';
+    if (this.state.file) {
+        uploadButton = (<div className="upload-icon" onClick={this.handleUpload}> </div>);
+    }
+
     return (
-      <div>
-        <progress value={this.state.percentate} max="100">0%</progress>
-        <input type="file" onChange={this.handleChange}/>
-        <button onClick={this.handleUpload}>Upload</button>
-        <button onClick={this.handleDownload}>Download</button>
+      <div className="container">
+        <div className="card upload">
+            <div className="progress-upload">
+                <progress value={this.state.percentate} max="100">0%</progress>
+            </div>
+            <div className="choose-file">
+                <input type="file" onChange={this.handleChange}/>
+            </div>
+            <div className="upload-button">
+                {uploadButton}
+            </div>
+            {/* <button onClick={this.handleDownload}>Download</button> */}
+        </div>
       </div>
     )
   }

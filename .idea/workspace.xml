@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e9748df-52c0-4a8a-9215-a999b6a9c5dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Notifications.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Songs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/Songs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/player/Player.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/player/Player.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/player/Player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/player/Player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/rain/Rain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/rain/Rain.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,7 +17,7 @@
     <session id="-97488025">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="23" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="3" />
@@ -79,7 +73,7 @@
           <entry key="css" value="484" />
           <entry key="gitignore" value="7" />
           <entry key="js" value="17952" />
-          <entry key="txt" value="46" />
+          <entry key="txt" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -87,7 +81,7 @@
           <entry key="CSS" value="484" />
           <entry key="HTML" value="5" />
           <entry key="JavaScript" value="17947" />
-          <entry key="PLAIN_TEXT" value="53" />
+          <entry key="PLAIN_TEXT" value="57" />
         </counts>
       </usages-collector>
     </session>
@@ -450,7 +444,7 @@
       <workItem from="1542351496641" duration="3607000" />
       <workItem from="1542619373224" duration="317000" />
       <workItem from="1542871215590" duration="4694000" />
-      <workItem from="1543598055345" duration="13943000" />
+      <workItem from="1543598055345" duration="13995000" />
     </task>
     <task id="LOCAL-00001" summary="go to redux">
       <created>1541011567158</created>
@@ -480,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541941284220</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ngon">
+      <created>1543614774992</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1543614774992</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131037000" />
+    <option name="totallyTimeSpent" value="131089000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -497,9 +498,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49925485" visible="true" weight="0.18253969" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49925485" visible="true" weight="0.18253969" />
       <window_info id="Structure" order="1" sideWeight="0.5007452" side_tool="true" weight="0.1950078" />
       <window_info id="npm" order="2" sideWeight="0.5007452" side_tool="true" weight="0.1950078" />
       <window_info id="Favorites" order="3" sideWeight="0.5007452" side_tool="true" weight="0.1950078" />
@@ -518,7 +518,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Version Control" order="3" weight="0.2642857" />
+      <window_info active="true" anchor="right" id="Version Control" order="3" visible="true" weight="0.2642857" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49925485" visible="true" weight="0.1950078" />
@@ -592,7 +592,8 @@
     <MESSAGE value="release" />
     <MESSAGE value="add chat" />
     <MESSAGE value="add chat, comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="add chat, comment" />
+    <MESSAGE value="ngon" />
+    <option name="LAST_COMMIT_MESSAGE" value="ngon" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dist/static/js/main.cdfb0328.chunk.js" />

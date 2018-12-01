@@ -16,9 +16,7 @@ class Dashboard extends Component{
     }
   }
 
-  het = () => {
-    alert('het main');
-  };
+  
 
   handleBackSong = () => {
     if (this.state.currentSongIndex > 0) {
@@ -46,18 +44,9 @@ class Dashboard extends Component{
       });
     }
   };
-  // handlePlaySong = () => {
-  //   this.setState({
-  //     ...this.state,
-  //     play: false
-  //   });
-  // };
-  // handlePauseSong = () => {
-  //   this.setState({
-  //     ...this.state,
-  //     play: true
-  //   });
-  // };
+  handleEndedSong = () => {
+    this.handleNextSong();
+  };
 
   componentWillMount() {
     if (this.state.autoplay === true) {
@@ -80,7 +69,7 @@ class Dashboard extends Component{
         <Player song={musics[this.state.currentSongIndex]}
                 autoplay={this.state.autoplay}
                 play={this.state.play}
-                ended={this.het}
+                ended={this.handleEndedSong}
                 backSong={this.handleBackSong}
                 nextSong={this.handleNextSong}
         />
@@ -104,7 +93,7 @@ const initMapStateToProps = (state) => {
 export default compose(
   connect(initMapStateToProps),
   firestoreConnect([
-    {collection: 'musics',limit: 1000, orderBy: ['updateAt', 'desc']},
+    {collection: 'musics',limit: 1000, orderBy: ['updateAt', 'asc']},
   ])
 ) (Dashboard);
 

@@ -1,11 +1,35 @@
 .player {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     background: black;
     color: white;
     text-align: center;
     height: 60px;
 }
+.control {
+
+    display: flex;
+    justify-content: center;
+
+    margin-left: 10px;
+}
+
+.track-info {
+    width: 1000px;
+    margin: auto;
+}
+.time-bar {
+    width: 600px;
+    margin: auto;
+    padding: 0 5px;
+}
+.volume {
+    width: 200px;
+    margin: auto;
+    padding: 0 5px;
+}
+
+
 a {
     text-decoration: none;
     display: inline-block;
@@ -17,16 +41,52 @@ a:hover {
     color: black;
 }
 
+
+
+
 .previous {
-    background-color: #f1f1f1;
-    color: black;
-}
-
+    width: 150px;
+    background: none;
+    border: none;
+    background-image: url(/svg-icon/multimedia2/003-back.svg);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: center;
+    margin: 5px;
+   }
+   
 .next {
-    background-color: #4CAF50;
-    color: white;
-}
-
+    width: 150px;
+    background: none;
+    border: none;
+    background-image: url(/svg-icon/multimedia2/023-next.svg);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: center;
+    margin: 5px;
+   }
+   
+.play {
+    width: 150px;
+    background: none;
+    border: none;
+    background-image: url(/svg-icon/multimedia2/002-pause.svg);
+    background-repeat: no-repeat;
+    background-size: 45px 45px;
+    background-position: center;
+    margin: 5px;
+   }
+   
+.pause {
+    width: 150px;
+    background: none;
+    border: none;
+    background-image: url(/svg-icon/multimedia2/025-play.svg);
+    background-repeat: no-repeat;
+    background-size: 45px 45px;
+    background-position: center;
+    margin: 5px;
+   }
 .round {
     border-radius: 50%;
 }

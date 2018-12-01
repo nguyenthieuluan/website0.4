@@ -1,0 +1,30 @@
+.upload {
+    padding: 40px;
+    display: flex;
+    justify-content: start;
+    align-items: stretch;
+}
+
+.upload-icon {
+    width: 45px;
+    height: 45px;
+    background-image: url(/svg-icon/multimedia2/031-upload.svg);
+    background-repeat: no-repeat;
+    background-size: 45px 45px;
+    background-position: center;
+}
+
+.progress-upload {
+    height: auto;
+    width: 200px;
+    margin: auto;
+}
+
+.choose-file {
+    margin: auto;
+    width: 200px;
+}
+.upload-button{
+    margin: auto;
+    width: 50px;
+}

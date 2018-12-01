@@ -2,7 +2,7 @@ import React from 'react';
 import './Player.css';
 
 class Player extends React.Component {
-    constructor(props) {
+  constructor(props) {
         super(props);
         this.state = {
           play: false,
@@ -20,31 +20,31 @@ class Player extends React.Component {
        this.audio.src = this.props.song.url;
       }
     
-      play = () => {
-        this.audio.pause();
-        this.setState({
-          ...this.state,
-          play: false
-        });
-      };
-      
-      pause = () => {
-        this.audio.play();
-        this.setState({
-          ...this.state,
-          play: true
-        });
-      };
+  play = () => {
+    this.audio.pause();
+    this.setState({
+      ...this.state,
+      play: false
+    });
+  };
 
-      handleChange = (event) => {
-        //this.setState({value: event.target.value});
-      };
-      handleChangeVolume = (event) => {
-          const volume = event.target.value;
-        this.setState({
-          volume: volume
-        });
-      };
+  pause = () => {
+    this.audio.play();
+    this.setState({
+      ...this.state,
+      play: true
+    });
+  };
+
+  handleChange = (event) => {
+    //this.setState({value: event.target.value});
+  };
+  handleChangeVolume = (event) => {
+      const volume = event.target.value;
+    this.setState({
+      volume: volume
+    });
+  };
 
   componentDidMount() {
     if (this.props.play === true) {
@@ -72,40 +72,44 @@ class Player extends React.Component {
     //  this.audio.loop = this.state.loop;
       this.audio.volume = this.state.volume/100;
         // this.audio.currentTime = this.state.currentTime;
-      //audio.addEventListener('ended', this.props.ended);
+      this.audio.addEventListener('ended', this.props.ended);
       let processButton = (<button onClick={this.play}>Play</button>);
 
       if (!this.state.play) {
           processButton = (
-             <button onClick={this.pause}>Pause</button>
+             <div className="pause" onClick={this.pause}/>
           );
       } else if (this.state.play) {
           processButton = (
-              <button onClick={this.play}>Play</button>
+              <div className="play" onClick={this.play}/>
           );
       }
     
       return (
         <div className = "player">
-          <button className="" onClick={this.props.backSong}>back</button>
-          {processButton}
-          <button className="" onClick={this.props.nextSong}>next</button>
 
-          <div>
-            {this.props.song && this.props.song.fileName}
-          </div>
+            <div className="previous" onClick={this.props.backSong}/>
+            {processButton}
+            <div className="next" onClick={this.props.nextSong}/>  
 
-
-            <input type="range" min="0" max="100" step="1"
-                value={0}
-                onChange={this.handleChange}
-            />
+          <div className="volume">
             <input type="range" min="0" max="100" step="1"
                 value={this.state.volume}
                 onChange={this.handleChangeVolume}
             />
-            <div className="">
-            </div>
+          </div>
+
+          <div className="time-bar">
+            <input type="range" min="0" max="100" step="1"
+                value={0}
+                onChange={this.handleChange}
+            />
+          </div>
+          
+          <div className="track-info">
+            {this.props.song && this.props.song.fileName}
+          </div>
+          
         </div>
         );
       }
