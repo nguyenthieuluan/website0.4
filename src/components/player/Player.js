@@ -15,6 +15,10 @@ class Player extends React.Component {
            volume: 100,
           // ended: 0,
           // value: 0,
+          currentTime: 0,
+          duration: '00:00',
+          duration1: null
+
         };
         this.audio = new Audio();
        this.audio.src = this.props.song.url;
@@ -47,15 +51,56 @@ class Player extends React.Component {
   };
 
   componentDidMount() {
+
+    this.slider.value = 0;
+
+		this.currentTimeInterval = null;
+		
+		// Get duration of the song and set it as max slider value
+		this.audio.onloadedmetadata = function() {
+			this.setState({...this.state, duration1: this.audio.duration});
+		}.bind(this);
+		
+		// Sync slider position with song current time
+		this.audio.onplay = () => {
+			this.currentTimeInterval = setInterval( () => {
+        this.slider.value = this.audio.currentTime;
+			}, 1000);
+		};
+		
+		this.audio.onpause = () => {
+			clearInterval(this.currentTimeInterval);
+		};
+		
+		// Seek functionality
+    this.slider.oninput = (e) => {
+      clearInterval(this.currentTimeInterval);
+      this.audio.currentTime = e.target.value;
+      
+    }
+    ///
     if (this.props.play === true) {
       this.setState({
         ...this.state,
         play: true
       });
-    }
+    };
+    this.audio.addEventListener('loadedmetadata', (event) => {
+      const t = (Math.floor(this.audio.duration));
+      const minute = ('0' + Math.floor(t/60)).slice(-2);
+      const second = ('0' + (t - Math.floor(minute*60))).slice(-2);
+      const duration = minute + ':' + second;
+      this.setState({
+        ...this.state, duration: duration
+      });
+
+    }, false);
+    this.audio.addEventListener('ended', this.props.ended);
+
   }
   componentWillReceiveProps(nextProps) {
       this.audio.src = nextProps.song.url;
+
       if (this.props.play === true) {
         this.setState({
           ...this.state,
@@ -64,15 +109,30 @@ class Player extends React.Component {
       }
   }
 
-
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
     render() {
-      console.log('change audio: ');
+      console.log('update player')
 
+      /// audio properties
       this.audio.autoplay = this.state.autoPlay;
     //  this.audio.loop = this.state.loop;
       this.audio.volume = this.state.volume/100;
-        // this.audio.currentTime = this.state.currentTime;
-      this.audio.addEventListener('ended', this.props.ended);
+        
+      /// event handle
+      
+      this.audio.addEventListener('timeupdate', (event) => {
+        const currentTime = Math.floor(this.audio.currentTime);
+        // this.setState({
+        //   currentTime: currentTime
+        // })
+        //currentMinute = Math.floor(currentTime/60);
+        //currentSecond = currentTime - currentMinute*60;
+    }, false);
+
+
+    /// element View
       let processButton = (<button onClick={this.play}>Play</button>);
 
       if (!this.state.play) {
@@ -92,20 +152,29 @@ class Player extends React.Component {
             {processButton}
             <div className="next" onClick={this.props.nextSong}/>  
 
+          <div>
+            {this.state.currentTime}
+          </div>  
+          {/* <lable for="points">Points: </lable> */}
+          <div className="time-bar">
+            {/* <input type="range" min="0" max="100" step="1"
+                value={0}
+                onChange={this.handleChange} */}
+                <input ref={(slider) => { this.slider = slider }}
+                  type="range"
+                  name="points"
+                  id="points"
+                  data-show-value="true"
+                  min="0" max={this.state.duration1} />
+          </div>
+          {this.state.duration}
+
           <div className="volume">
             <input type="range" min="0" max="100" step="1"
                 value={this.state.volume}
                 onChange={this.handleChangeVolume}
             />
           </div>
-
-          <div className="time-bar">
-            <input type="range" min="0" max="100" step="1"
-                value={0}
-                onChange={this.handleChange}
-            />
-          </div>
-          
           <div className="track-info">
             {this.props.song && this.props.song.fileName}
           </div>

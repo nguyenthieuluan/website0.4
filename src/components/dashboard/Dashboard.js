@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import "./Dashboard.css";
 import Player from '../player/Player';
 import Songs from './Songs';
+// import CanvasComponent from '../canvas/Canvas';
 
 class Dashboard extends Component{
   constructor () {
@@ -75,12 +76,23 @@ class Dashboard extends Component{
         />
       ) : 'loading...';
     return (
-      <div className="dashboard container">
+      <body id="page">
+        <ul class="cb-slideshow">
+          <li><span>Image 01</span></li>
+          <li><span>Image 02</span></li>
+          <li><span>Image 03</span></li>
+          <li><span>Image 04</span></li>
+          <li><span>Image 05</span></li>
+          <li><span>Image 06</span></li>
+        </ul>
+        <div className="dashboard container">
           <Songs songs = {musics}/>
-        <div className="player">
-          {player}
+          <div className="player">
+            {player}
+          </div>
         </div>
-      </div>
+      </body>
+      
     )
   }
 }
