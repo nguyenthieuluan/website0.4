@@ -88,7 +88,7 @@ animation: imageAnimation 72s linear infinite 0s;
   8% { opacity: 1;
        -webkit-animation-timing-function: ease-out; }
   17% { opacity: 1 }
-  25% { opacity: 0 }
+  25% { opacity: 1 }
   100% { opacity: 0 }
 }
 @-moz-keyframes imageAnimation { 
@@ -97,7 +97,7 @@ animation: imageAnimation 72s linear infinite 0s;
   8% { opacity: 1;
        -moz-animation-timing-function: ease-out; }
   17% { opacity: 1 }
-  25% { opacity: 0 }
+  25% { opacity: 1 }
   100% { opacity: 0 }
 }
 @-o-keyframes imageAnimation { 
@@ -106,7 +106,7 @@ animation: imageAnimation 72s linear infinite 0s;
   8% { opacity: 1;
        -o-animation-timing-function: ease-out; }
   17% { opacity: 1 }
-  25% { opacity: 0 }
+  25% { opacity: 1 }
   100% { opacity: 0 }
 }
 @-ms-keyframes imageAnimation { 
@@ -115,7 +115,7 @@ animation: imageAnimation 72s linear infinite 0s;
   8% { opacity: 1;
        -ms-animation-timing-function: ease-out; }
   17% { opacity: 1 }
-  25% { opacity: 0 }
+  25% { opacity: 1 }
   100% { opacity: 0 }
 }
 @keyframes imageAnimation { 
@@ -124,7 +124,7 @@ animation: imageAnimation 72s linear infinite 0s;
   8% { opacity: 1;
        animation-timing-function: ease-out; }
   17% { opacity: 1 }
-  25% { opacity: 0 }
+  25% { opacity: 1 }
   100% { opacity: 0 }
 }
 /* Animation for the title */
