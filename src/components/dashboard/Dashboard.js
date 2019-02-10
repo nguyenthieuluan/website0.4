@@ -17,8 +17,6 @@ class Dashboard extends Component{
     }
   }
 
-  
-
   handleBackSong = () => {
     if (this.state.currentSongIndex > 0) {
       const index = this.state.currentSongIndex - 1;
@@ -77,7 +75,7 @@ class Dashboard extends Component{
       ) : 'loading...';
     return (
       <body id="page">
-        <ul class="cb-slideshow">
+        <ul className="cb-slideshow">
           <li><span>Image 01</span></li>
           <li><span>Image 02</span></li>
           <li><span>Image 03</span></li>
@@ -86,7 +84,9 @@ class Dashboard extends Component{
           <li><span>Image 06</span></li>
         </ul>
         <div className="dashboard container">
-          <Songs songs = {musics}/>
+          <div className="play-list" >
+            <Songs songs = {musics}/>
+          </div>
           <div className="player">
             {player}
           </div>

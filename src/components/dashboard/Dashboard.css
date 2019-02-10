@@ -128,3 +128,13 @@ animation: imageAnimation 72s linear infinite 0s;
   100% { opacity: 0 }
 }
 /* Animation for the title */
+
+.play-list {
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.play-list-content {
+  overflow: auto;
+
+}

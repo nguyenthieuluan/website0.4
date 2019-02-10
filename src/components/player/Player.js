@@ -129,7 +129,7 @@ class Player extends React.Component {
   };
   /// View
   render() {
-    console.log('update player')
+    // console.log('update player')
 
     /// audio properties
     this.audio.autoplay = this.state.autoPlay;
@@ -138,7 +138,7 @@ class Player extends React.Component {
     /// event handle
 
     this.audio.addEventListener('timeupdate', (event) => {
-      const currentTime = Math.floor(this.audio.currentTime);
+      // const currentTime = Math.floor(this.audio.currentTime);
       // this.setState({
       //   currentTime: currentTime
       // })
@@ -173,28 +173,32 @@ class Player extends React.Component {
 
     return (
       <div className = "player">
-
+        {/* button group */}
           <div className="previous" onClick={this.props.backSong}/>
           {processButton}
           <div className="next" onClick={this.props.nextSong}/>
 
-        <div>
+        {/* time-seek-group */}
+        <div className="hide">
           {this.state.currentTime}
         </div>
 
-        <div className="time-bar">
-              <input ref={(slider) => { this.slider = slider }}
-                className="seak-bar"
-                type="range"
-                name="points"
-                id="points"
-                data-show-value="true"
-                min="0" max={this.state.duration1} />
+          <div className="time-bar hide-on-med-and-down">
+                <input ref={(slider) => { this.slider = slider }}
+                  className="seak-bar"
+                  type="range"
+                  name="points"
+                  id="points"
+                  data-show-value="true"
+                  min="0" max={this.state.duration1} />
+          </div>
+
+        <div className="hide-on-small-only">
+          {this.state.duration}
+
         </div>
 
-        {this.state.duration}
-
-        <div className="volume">
+        <div className="volume hide-on-small-only">
           <input type="range" 
             className="volume"
             min="0" max="100" step="1"
@@ -203,9 +207,11 @@ class Player extends React.Component {
           />
         </div>
 
-        {loopButton}
+        <div className="hide-on-small-only">
+          {loopButton}
+        </div>
 
-        <div className="track-info">
+        <div className="track-info hide-on-small-only">
           {this.props.song && this.props.song.fileName}
         </div>
 

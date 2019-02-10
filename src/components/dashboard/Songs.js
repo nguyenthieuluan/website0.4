@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import "./Dashboard.css";
 
 const Songs = (props) => {
   const {songs} = props;
@@ -8,7 +9,7 @@ const Songs = (props) => {
         <div className="card z-depth-0">
           <div className="card-content black white-text">
             <span className="card-title">Play List</span>
-            <ul className="notification">
+            <ul className="notification play-list-content">
               {songs && songs.map((item, i) => {
                 return (
                   <li key={i} className="left-align">
