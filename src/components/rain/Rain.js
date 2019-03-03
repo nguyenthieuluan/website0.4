@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Rain.css';
+import BackGround from '../ui/back-ground/BackGround';
 
 class Rain extends Component {
   
@@ -52,6 +53,7 @@ class Rain extends Component {
   render() {
     return (
       <div id="Rain">
+        <BackGround/>
       </div>
     );
   }

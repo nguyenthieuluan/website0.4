@@ -5,8 +5,9 @@ import { compose } from 'redux';
 import "./Dashboard.css";
 import Player from '../player/Player';
 import Songs from './Songs';
-import Menu from '../menu/Menu';
+import Menu from '../ui/menu/Menu';
 import BackGround from '../ui/back-ground/BackGround';
+import MailTo from '../ui/mail-to/MailTo';
 
 // import CanvasComponent from '../canvas/Canvas';
 
@@ -19,6 +20,7 @@ class Dashboard extends Component{
       autoplay: true,
     }
   }
+  mail = 'luanthieu.nguyen@gmail.com';
 
   handleBackSong = () => {
     if (this.state.currentSongIndex > 0) {
@@ -30,6 +32,7 @@ class Dashboard extends Component{
       });
     }
   };
+
   handleNextSong = () => {
     const index = this.state.currentSongIndex + 1;
     if (index < this.props.musics.length) {
@@ -46,6 +49,7 @@ class Dashboard extends Component{
       });
     }
   };
+
   handleEndedSong = () => {
     this.handleNextSong();
   };
@@ -76,12 +80,21 @@ class Dashboard extends Component{
                 nextSong={this.handleNextSong}
         />
       ) : 'loading...';
+
     return (
-      <body id="page">
-        <BackGround/>
+      <div>
+        <span className="version">
+          v1.01
+        </span>
+        <div className="back-ground">
+          <BackGround/>
+        </div>
+        <div className="mail-to">
+          <MailTo email={'mailto:' + this.mail}/>
+        </div>
         <div className="dashboard container">
           <div className="menu">
-            <Menu/>
+            {/* <Menu/> */}
           </div>
           <div className="play-list" >
             <Songs songs = {musics}/>
@@ -90,7 +103,7 @@ class Dashboard extends Component{
             {player}
           </div>
         </div>
-      </body>
+      </div>
       
     )
   }
