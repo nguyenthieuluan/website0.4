@@ -5,6 +5,9 @@ import { compose } from 'redux';
 import "./Dashboard.css";
 import Player from '../player/Player';
 import Songs from './Songs';
+import Menu from '../menu/Menu';
+import BackGround from '../ui/back-ground/BackGround';
+
 // import CanvasComponent from '../canvas/Canvas';
 
 class Dashboard extends Component{
@@ -75,15 +78,11 @@ class Dashboard extends Component{
       ) : 'loading...';
     return (
       <body id="page">
-        <ul className="cb-slideshow">
-          <li><span>Image 01</span></li>
-          <li><span>Image 02</span></li>
-          <li><span>Image 03</span></li>
-          <li><span>Image 04</span></li>
-          <li><span>Image 05</span></li>
-          <li><span>Image 06</span></li>
-        </ul>
+        <BackGround/>
         <div className="dashboard container">
+          <div className="menu">
+            <Menu/>
+          </div>
           <div className="play-list" >
             <Songs songs = {musics}/>
           </div>
