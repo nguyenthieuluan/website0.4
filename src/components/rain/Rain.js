@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Rain.css';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Rain extends Component {
   constructor(props) {
@@ -30,13 +30,13 @@ class Rain extends Component {
     ));
     return (
       <div id="Rain">
-       <ReactCSSTransitionGroup
+       {/* <ReactCSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
 
           {items}
-        </ReactCSSTransitionGroup>
+        </ReactCSSTransitionGroup> */}
       </div>
     );
   }

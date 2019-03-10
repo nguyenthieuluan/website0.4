@@ -104,7 +104,7 @@ class Dashboard extends Component{
     return (
       <div>
         <span className="version">
-          v1.01
+          v1.02
         </span>
         <div className="back-ground">
           <BackGround/>
