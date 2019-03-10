@@ -28,6 +28,11 @@
     margin: auto;
     padding: 0 5px;
 }
+.loop {
+    display: inline-block;
+    margin: auto;
+    padding: 0 5px;
+}
 
 
 a {

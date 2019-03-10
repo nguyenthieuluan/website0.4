@@ -1,59 +1,42 @@
 import React, { Component } from 'react';
 import './Rain.css';
-import BackGround from '../ui/back-ground/BackGround';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Rain extends Component {
-  
-  startRain() {
-    //const rainSection = document.getElementById('Rain');
-    const rainSection = document.getElementById('Rain');
-
-    for(let i = 1; i < this.props.numDrops; i++) {
-      const dropLeft = this.randRange(0, 1600);
-      const dropTop = this.randRange(-1000, 1400);
-
-      const drop = document.createElement('div');
-
-      drop.setAttribute('class', 'drop');
-      drop.setAttribute('id', `drop${i}`);
-
-      rainSection.appendChild(drop);
-
-      drop.style.left = `${dropLeft}px`;
-      drop.style.top = `${dropTop}px`;
-    }
-  };
-
-  stopRain() {
-    const rainSection = document.getElementById('Rain');
-
-    while(rainSection.hasChildNodes()) {
-      rainSection.removeChild(rainSection.lastChild);
-    }
-  };
-
-
-  componentDidUpdate(prevProps, prevState) {
-    if(this.props.numDrops !== prevProps.numDrops) {
-      this.stopRain();
-      this.startRain();
-    }
-  };
-
-  
-
-  randRange(minNum, maxNum) {
-    return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
+  constructor(props) {
+    super(props);
+    this.state = {items: ['hello', 'world', 'click', 'me']};
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
-  componentDidMount() {
-    this.startRain();
+  handleAdd() {
+    const newItems = this.state.items.concat([
+      prompt('Enter some text')
+    ]);
+    this.setState({items: newItems});
+  }
+
+  handleRemove(i) {
+    let newItems = this.state.items.slice();
+    newItems.splice(i, 1);
+    this.setState({items: newItems});
   }
 
   render() {
+    const items = this.state.items.map((item, i) => (
+      <div key={item} onClick={() => this.handleRemove(i)}>
+        {item}
+      </div>
+    ));
     return (
       <div id="Rain">
-        <BackGround/>
+       <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+
+          {items}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

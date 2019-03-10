@@ -123,7 +123,6 @@ class Player extends React.Component {
       ...this.state,
       loop: !this.state.loop
     }, () => {
-      console.log(this.state.loop)
       this.audio.loop = this.state.loop;
     })
   };
@@ -164,10 +163,10 @@ class Player extends React.Component {
                       </div>);
 
     if (this.state.loop) {
-      loopButton = (<div className="loop-current" onClick={this.handleLoop}>
+      loopButton = (<div className="loop-current hide-on-small-only" onClick={this.handleLoop}>
                       </div>);
     } else {
-      loopButton = (<div className="loop" onClick={this.handleLoop}>
+      loopButton = (<div className="loop hide-on-small-only" onClick={this.handleLoop}>
                       </div>);
     }
 
@@ -193,12 +192,12 @@ class Player extends React.Component {
                   min="0" max={this.state.duration1} />
           </div>
 
-        <div className="hide-on-small-only">
+        <div className="hide-on-med-and-down">
           {this.state.duration}
 
         </div>
 
-        <div className="volume hide-on-small-only">
+        <div className="volume hide-on-med-and-down">
           <input type="range" 
             className="volume"
             min="0" max="100" step="1"
@@ -207,9 +206,7 @@ class Player extends React.Component {
           />
         </div>
 
-        <div className="hide-on-small-only">
           {loopButton}
-        </div>
 
         <div className="track-info hide-on-small-only">
           {this.props.song && this.props.song.fileName}

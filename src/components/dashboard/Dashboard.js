@@ -5,10 +5,9 @@ import { compose } from 'redux';
 import "./Dashboard.css";
 import Player from '../player/Player';
 import Songs from './Songs';
-import Menu from '../ui/menu/Menu';
+// import Menu from '../ui/menu/Menu';
 import BackGround from '../ui/back-ground/BackGround';
 import MailTo from '../ui/mail-to/MailTo';
-
 // import CanvasComponent from '../canvas/Canvas';
 
 class Dashboard extends Component{
@@ -18,6 +17,7 @@ class Dashboard extends Component{
       currentSongIndex: 0,
       play: false,
       autoplay: true,
+      transform: null
     }
   }
   mail = 'luanthieu.nguyen@gmail.com';
@@ -53,6 +53,18 @@ class Dashboard extends Component{
   handleEndedSong = () => {
     this.handleNextSong();
   };
+  
+  handleScroll = (event) => {
+    let scrollTop = event.srcElement.body.scrollTop,
+        itemTranslate = Math.min(0, scrollTop/3 - 60);
+
+    this.setState({
+      transform: itemTranslate
+    });
+
+    console.log('scroll ',this.state.transform);
+    
+  };
 
   componentWillMount() {
     if (this.state.autoplay === true) {
@@ -62,6 +74,14 @@ class Dashboard extends Component{
       });
     }
   }
+
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnmount = () => {
+      window.removeEventListener('scroll', this.handleScroll);
+  };
 
   render() {
     // const foo= new Sound("url",100,true);
